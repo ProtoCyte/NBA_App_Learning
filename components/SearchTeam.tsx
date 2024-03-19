@@ -21,11 +21,11 @@ const SearchTeam = ({team, setTeam}: SearchTeamProps) => {
 
   return (
     <div className = "search-team">
-      <Combobox>
+      <Combobox value={team} onChange={setTeam}>
         <div className='relative w-full'>
           <Combobox.Input 
           className="search-team__input"
-          placeholder='Atlanta Hawks'
+          placeholder='Search For Teams'
           displayValue={(team: string) => team}
           onChange={(e) => setQuery(e.target.value)}>
           
@@ -36,14 +36,24 @@ const SearchTeam = ({team, setTeam}: SearchTeamProps) => {
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
             afterLeave={() => setQuery('')}>
-              <Combobox.Options>
-                {filteredTeams.length === 0 && query !== "" && (
-                  <Combobox.Option 
-                    value={query}
-                    className="search-team__option">
-                      Create "{query}"
-                  </Combobox.Option>
-                )}
+              <Combobox.Options className="absolute w-full z-10 mt-1 bg-white shadow-lg max-h-60 overflow-auto">
+                { (
+                  filteredTeams.map((item) => (
+                    <Combobox.Option
+                      key={item}
+                      className={({ active }) =>
+                        `relative search-team__option ${
+                          active ? "bg-primary-blue text-white" : "text-gray-900"
+                        }`
+                      }
+                      value={item}
+                    >
+                      {item}
+
+                    </Combobox.Option>
+                    
+                  )
+                ))}
               </Combobox.Options>
           </Transition>
         </div>

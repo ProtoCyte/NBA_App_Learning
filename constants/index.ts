@@ -61,17 +61,10 @@ export const teams = [
   
   export const footerLinks = [
     {
-      title: "About",
-      links: [
-        { title: "How it works", url: "/" },
-      ],
-    },
-    {
       title: "Socials",
       links: [
-        { title: "LinkedIn", url: "/" },
-        { title: "Github", url: "/" },
-        { title: "Discord", url: "/" },
+        { title: "LinkedIn", url: "https://www.linkedin.com/in/billy-jia-9b1b5b28b/" },
+        { title: "Github", url: "https://github.com/Protocyte" },
       ],
     },
   ];

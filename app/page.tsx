@@ -1,7 +1,13 @@
-import { CustomFilter, Hero, SearchBar } from "@/components";
+import { CustomFilter, Hero, SearchBar, TeamCard } from "@/components";
+import { fetchTeamStats, fetchTeams } from "@/utils";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+
+  const allTeams = await fetchTeams();
+  
+  const isDataEmpty = !Array.isArray(allTeams) || allTeams.length < 1 || !allTeams;
+  
   return (
     <main className="overflow-hidden">
       <Hero />
@@ -19,6 +25,23 @@ export default function Home() {
             <CustomFilter title="East/West "/>
           </div>
         </div>
+
+        {!isDataEmpty ? (
+          <section>
+            <div className="home__cars-wrapper">
+              {allTeams?.map((team) => (
+                <TeamCard team={team} />
+              ))}
+
+            </div>
+          </section>
+        ): (
+          <div className="home__error-container">
+            <h2 className="text-black text-xl font-bold"> No Teams found</h2>
+          </div>
+
+        )}
+
       </div>
     </main>
   );

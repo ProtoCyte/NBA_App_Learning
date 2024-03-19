@@ -11,16 +11,16 @@ const Hero = () => {
           NBA Stats
         </h1>
         
-        <p className='hero__subtitle'>
+        <div className='hero__subtitle'>
           Find any stat you want
-        </p>
+        </div>
         <div className="flex justify-start items-center gap-4">
           <CustomButton 
           title="Browse Teams"
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
           handleClick={handleScroll}
             />
-          <CustomButton 
+          {/* <CustomButton 
           title="Explore Players"
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
           handleClick={handleScroll}
@@ -29,7 +29,7 @@ const Hero = () => {
           title="Predict Wins"
           containerStyles="bg-primary-blue text-white rounded-full mt-10"
           handleClick={handleScroll}
-            />  
+            />   */}
         </div>
 
       </div>
